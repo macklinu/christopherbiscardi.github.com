@@ -6,7 +6,7 @@ tags:
   - javascript
   - yarn
 ---
-[Yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/) are a great option for working on multiple packages at the same time. They replaces `npm link`, gives you the ability to run a command in all packages (or a specific package), and lets you install all dependencies for all packages at the same time. Popular projects like [Jest](https://github.com/facebook/jest/blob/647b2ad2371cc1d659bc08820be022c198c897fd/lerna.json#L5), [Babel](https://github.com/babel/babel/blob/a2e6d8e96807b15908ef3640239b5421457807f7/lerna.json#L32), and [Gatsby](https://github.com/gatsbyjs/gatsby/blob/fc2ff3503ac1ed32a4b7677b12edf4c4ea4fd050/lerna.json#L21) all use the yarn client or yarn workspaces fronted by [Lerna](https://github.com/lerna/lerna) to ease the pain of developing large sets of packages (even if they're not interdependent).
+[Yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/) are a great option for working on multiple packages at the same time. It replaces `npm link`, gives you the ability to run a command in all packages (or a specific package), and lets you install all dependencies for all packages at the same time. Popular projects like [Jest](https://github.com/facebook/jest/blob/647b2ad2371cc1d659bc08820be022c198c897fd/lerna.json#L5), [Babel](https://github.com/babel/babel/blob/a2e6d8e96807b15908ef3640239b5421457807f7/lerna.json#L32), and [Gatsby](https://github.com/gatsbyjs/gatsby/blob/fc2ff3503ac1ed32a4b7677b12edf4c4ea4fd050/lerna.json#L21) all use the yarn client or yarn workspaces fronted by [Lerna](https://github.com/lerna/lerna) to ease the pain of developing large sets of packages (even if they're not interdependent).
 
 ## Multi-Package Repos
 
@@ -120,9 +120,9 @@ So now that we have everything set up, we'll install all dependencies in all of 
 yarn
 ```
 
-Running `yarn` not only installs all dependencies for all packages, but it also handles linking the packages between each other if they depend on one another. For example, if `package-a` had `package-b` in it's `dependencies` in it's `package.json`, running yarn would link `package-b` into `package-a`. 
+Running `yarn` not only installs all dependencies for all packages, but it also handles linking the packages between each other if they depend on one another. For example, if `package-a` had `package-b` in its `dependencies` in its `package.json`, running yarn would link `package-b` into `package-a`. 
 
-This linking means that we can, for example, continue to develop `package-b` and running tests in `package-a`. Whenever we make a change to `package-b`, `package-a` already knows about it so the tests will use it. Using this linking is very powerful for developing sets of interdependent packages because we can run tests for the entire repo against the entire set of changes. Speaking of, we can run the `test` script in every workspace with
+This linking means that we can, for example, continue to develop `package-b` and run tests in `package-a`. Whenever we make a change to `package-b`, `package-a` already knows about it so the tests will use it. Using this linking is very powerful for developing sets of interdependent packages because we can run tests for the entire repo against the entire set of changes. Speaking of, we can run the `test` script in every workspace with
 
 ```shell
 yarn workspaces run test
